@@ -1,0 +1,28 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Test DTL
+{% endblock title %}
+
+{% block body %}
+<h1>The food is {{ food }}</h1>
+<h4>The ingredients to cook {{ food }} are</h4>
+<ul>
+{% for ingredient in ingredients %}
+<li>{{ ingredient }}</li>
+{% endfor %}
+</ul>
+{% if is_favorite %}
+<p>Rice is my favorite food</p>
+{% else %}
+<p>Rice is not my favorite food</p>
+{% endif %}
+<p>It takes {{ time_to_cook_in_mins }} minutes to cook {{ food }}</p>
+
+<h3>Products</h3>
+{% for product, quantity in products.items %}
+<p>{{ product }}: {{ quantity }}</p>
+{% endfor %}
+{% endblock body %}
+
+

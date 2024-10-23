@@ -1,0 +1,22 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Example DTL
+{% endblock title %}
+
+{% block body %}
+<h1>My name is {{ name }}</h1>
+{% if position == "student" %}
+<p>I am a student of SQI</p>
+{% elif position == "instructor" %}
+<p>I am an instructor at SQI</p>
+{% else %}
+<p>I am neither a student nor an instructor of SQI</p>
+{% endif %}
+
+<ul>
+{% for language in languages %}
+<li>{{ language }}</li>
+{% endfor %}
+</ul>
+{% endblock body %}

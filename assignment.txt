@@ -1,0 +1,13 @@
+Assignment 1
+Create a folder called 'food' and create a config project inside.
+Write code so that when the user goes to '127.0.0.1:8000/rice', they should see
+a html page with an image of rice and a h3 tag that contains "Rice".
+
+Assignment 2
+Create a new repository online called 'food-assignment'. You should push the food folder that you have locally the
+food-assignment repo. Make sure you do git add and git commit before pulling with git pull.
+
+
+
+When the user goes to 127.0.0.1:8000/welcome, they should see a html page welcome.html 
+that says "Welcome to the website"
