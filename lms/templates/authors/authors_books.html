@@ -18,7 +18,13 @@ Authors and Books
 
 <h2>All Books</h2>
 <ul>
+
 {% for book in all_books %}
+{% if book.cover_image %}
+    <img width=100 height=100 src="{{ book.cover_image.url }}" alt="Image for {{ book.title }}">
+{% else %}
+<p>No image for this book</p>
+{% endif %}
     <li>{{ book }} Written by {{ book.author }}<br>Number of Pages: {{ book.no_of_pages }}</li>
     
 {% endfor %}

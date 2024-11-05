@@ -10,6 +10,7 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     no_of_pages = models.PositiveIntegerField()
     published_on = models.DateField()
+    cover_image = models.ImageField(upload_to="book_cover_images/", blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"
