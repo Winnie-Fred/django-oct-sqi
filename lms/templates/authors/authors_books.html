@@ -1,0 +1,28 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Authors and Books
+{% endblock title %}
+
+{% block body %}
+<h2>All Authors</h2>
+<ul>
+{% for author in all_authors %}
+{% if author.gender == "M" %}
+    <li>{{ author }}. He was born in {{ author.date_of_birth }}</li>
+{% else %}
+    <li>{{ author }}. She was born in {{ author.date_of_birth }}</li>
+{% endif %}
+{% endfor %}
+</ul>
+
+<h2>All Books</h2>
+<ul>
+{% for book in all_books %}
+    <li>{{ book }} Written by {{ book.author }}<br>Number of Pages: {{ book.no_of_pages }}</li>
+    
+{% endfor %}
+</ul>
+
+
+{% endblock body %}
