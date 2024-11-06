@@ -6,6 +6,16 @@
     <title>All Authors</title>
 </head>
 <body>
-    <h2>List of all Authors</h2>
+    <h2>All Authors</h2>
+    <ul>
+    {% for author in all_authors %}
+    <h3><a href="{% url 'authors:author_detail' author.pk %}">{{ author }}</a></h3>
+    {% if author.gender == "M" %}
+        <li>{{ author }}. He was born in {{ author.date_of_birth }}</li>
+    {% else %}
+        <li>{{ author }}. She was born in {{ author.date_of_birth }}</li>
+    {% endif %}
+    {% endfor %}
+    </ul>
 </body>
 </html>
