@@ -1,0 +1,14 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Create Book
+{% endblock title %}
+
+{% block body %}
+Create Book
+<form action="{% url 'library:create_book' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ book_create_form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+{% endblock body %}
