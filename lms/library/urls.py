@@ -7,4 +7,5 @@ app_name = "library"
 urlpatterns = [
     path("home/", views.home, name="home"),
     path("create-book/", views.create_book, name="create_book"),
+    path('create-book-manually/', views.create_book_manual, name="create_book_manual"),
 ]
