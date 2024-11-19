@@ -1,0 +1,19 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+{{ book }}
+{% endblock title %}
+
+{% block body %}
+<h1>{{ book.title }}</h1>
+<h3>Written by {{ book.author.first_name }} {{ book.author.last_name }}</h3>
+<h5>Number of pages: {{ book.no_of_pages }}</h5>
+<p>Published on {{ book.published_on }}</p>
+{% if book.cover_image %}
+<img src="{{ book.cover_image.url }}" alt="Cover Image of {{ book.title }}" width="100" height="100">
+{% else %}
+<p>No image for {{ book.title }}</p>
+{% endif %}
+<a href="{% url 'library:update_book' book.pk %}">Edit</a>
+<a href="{% url 'library:confirm_delete' book.pk %}">Delete</a>
+{% endblock body %}
