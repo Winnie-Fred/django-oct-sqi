@@ -1,0 +1,56 @@
+{% extends "partials/base.html" %}
+
+{% block title %}Create Review for {{ book.title }}{% endblock title %}
+
+{% block body %}
+
+<section>
+    <h3>Create Review for {{ book.title }}</h3>
+    <form action="{% url 'review:create_review' book.id %}" method="POST">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        {% if form.book.errors %}
+            {% for error in form.book.errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        <input type="hidden" name="book" value="{{ book.id }}">
+        
+        <p>
+            {% if form.reviewer_name.errors %}
+                {% for error in form.reviewer_name.errors %}
+                <p class="error">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+            <label for="reviewer_name">Reviewer Name</label>
+            <input type="text" name="reviewer_name" {% if form.reviewer_name.value %}value="{{ form.reviewer_name.value }}"{% endif %}>
+        </p>
+        <p>
+            {% if form.rating.errors %}
+                {% for error in form.rating.errors %}
+                <p class="error">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+            <label for="rating">Rating</label>
+            <input type="number" name="rating" {% if form.rating.value %}value="{{ form.rating.value }}"{% endif %}>
+        </p>
+        <p>
+            {% if form.comment.errors %}
+                {% for error in form.comment.errors %}
+                <p class="error">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+            <label for="comment">Comment</label>
+            <textarea name="comment" width="30" height="30">
+                {% if form.comment.value %}{{ form.comment.value }}{% endif %}
+            </textarea>
+        </p>
+        <button type="submit">Leave Review</button>
+    </form>
+</section>
+
+{% endblock body %}
