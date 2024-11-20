@@ -11,6 +11,29 @@
 <body>
     {% include "./header.html" %}
 
+    {% if request.user.is_authenticated  %}
+    <form action="{% url 'authentication:log_out' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+    </form>
+    {% else %}
+    <a href="{% url 'authentication:log_in' %}">Log In</a>
+    {% endif %}
+
+
+    {% if request.user.is_authenticated %}
+        <h2>Welcome, {{ request.user }}</h2>
+    {% else %}
+        <h2>Welcome</h2>
+    {% endif %}    
+
+
+    {% if messages %}
+        {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    {% endif %}
+
     <div class="container">
         {% block body %}
         {% endblock body %}

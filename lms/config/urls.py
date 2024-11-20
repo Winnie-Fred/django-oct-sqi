@@ -26,6 +26,7 @@ urlpatterns = [
     path('authors/', include("authors.urls")),
     path("", include("dtl.urls")),
     path("", include("pages.urls")),
+    path("", include("authentication.urls")),
 ]
 
 if settings.DEBUG:

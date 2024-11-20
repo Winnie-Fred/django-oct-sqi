@@ -17,6 +17,16 @@ Create Book
             </ul>
         {% endif %}
     </div>
+
+    {% if form.errors.added_by %}
+        <ul>
+        {% for error in form.errors.added_by %}
+        <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <input type="hidden" value="{{ request.user.id }}" name="added_by">
+
     {% if form.errors.title %}
         <ul>
         {% for error in form.errors.title %}

@@ -1,0 +1,14 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Sign Up
+{% endblock title %}
+
+{% block body %}
+<h1>Sign Up</h1>
+<form action="{% url 'authentication:sign_up' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Account</button>
+</form>
+{% endblock body %}

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'library',
     'authors',
     'dtl',
+    'authentication',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_URL = 'authentication:log_in'
+LOGOUT_REDIRECT_URL = 'library:home'
+LOGIN_REDIRECT_URL = 'library:home'

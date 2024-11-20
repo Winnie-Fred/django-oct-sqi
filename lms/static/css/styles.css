@@ -40,3 +40,10 @@ li:hover {
     background: #d1d1d1;
     cursor: pointer;
 }
+
+li.success {
+    background-color: green;
+}
+li.error {
+    background-color: red;
+}
