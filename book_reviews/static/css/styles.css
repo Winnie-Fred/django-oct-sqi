@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+  
+.nav-left .brand {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+  
+.nav-right {
+    display: flex;
+    gap: 15px;
+}
+  
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+  
+.nav-link:hover {
+    background-color: #34495e;
+}
+  
+.nav-btn {
+    background-color: #3c89e7;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+  
+.nav-btn:hover {
+    background-color: #2e71c3;
+}
+
+.space-after-nav {
+    margin-bottom: 70px;
+}
+
+#login-btn {
+    margin-top: 20px;
+    background-color: green;
+}
+
+/* Books */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+  }
+  
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .book-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .book-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .book-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .book-card h2 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #2c3e50;
+  }
+  
+  .book-card h3 {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #34495e;
+  }
+  
+  .book-card p {
+    font-size: 14px;
+    color: #7f8c8d;
+  }
+  
+  @media (max-width: 600px) {
+    .book-card h2 {
+      font-size: 16px;
+    }
+    .book-card h3 {
+      font-size: 14px;
+    }
+    .book-card p {
+      font-size: 12px;
+    }
+  }
+
+/* Books */
+  
