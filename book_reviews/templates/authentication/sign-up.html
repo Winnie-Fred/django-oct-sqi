@@ -1,0 +1,69 @@
+{% extends "partials/base.html" %}
+
+{% block title %}Sign Up{% endblock title %}
+
+{% block body %}
+<h3 class="form-heading">Sign Up</h3>
+<form action="{% url 'authentication:sign_up' %}" method="POST" class="review-form">
+    {% csrf_token %}
+    {% for error in form.non_field_errors %}
+    <p class="error-msg">{{ error }}</p>
+    {% endfor %}
+
+    <div class="form-group">
+        {% if form.errors.first_name %}
+        {% for error in form.errors.first_name %}
+            <p class="error-msg">{{ error }}</p>
+        {% endfor %}
+        {% endif %}
+        <label for="first_name">First Name:</label>
+        <input id="first_name" name="first_name" class="form-control">
+    </div>
+    <div class="form-group">
+        {% if form.errors.last_name %}
+        {% for error in form.errors.last_name %}
+            <p class="error-msg">{{ error }}</p>
+        {% endfor %}
+        {% endif %}
+        <label for="last_name">Last Name:</label>
+        <input id="last_name" name="last_name" class="form-control">
+    </div>
+    <div class="form-group">
+        {% if form.errors.email %}
+        {% for error in form.errors.email %}
+            <p class="error-msg">{{ error }}</p>
+        {% endfor %}
+        {% endif %}
+        <label for="email">Email Address:</label>
+        <input id="email" name="email" type="email" class="form-control">
+    </div>
+    <div class="form-group">
+        {% if form.errors.username %}
+        {% for error in form.errors.username %}
+            <p class="error-msg">{{ error }}</p>
+        {% endfor %}
+        {% endif %}
+        <label for="username">Username:</label>
+        <input id="username" type="text" name="username" class="form-control">
+    </div>
+    <div class="form-group">
+        {% if form.errors.password1 %}
+        {% for error in form.errors.password1 %}
+            <p class="error-msg">{{ error }}</p>
+        {% endfor %}
+        {% endif %}
+        <label for="password1">Enter Password:</label>
+        <input id="password1" type="password" name="password1" class="form-control">
+    </div>
+    <div class="form-group">
+        {% if form.errors.password2 %}
+        {% for error in form.errors.password2 %}
+            <p class="error-msg">{{ error }}</p>
+        {% endfor %}
+        {% endif %}
+        <label for="password2">Confirm Password:</label>
+        <input id="password2" type="password" name="password2" class="form-control">
+    </div>
+    <button type="submit" class="submit-btn">Sign Up</button>
+</form>
+{% endblock body %}

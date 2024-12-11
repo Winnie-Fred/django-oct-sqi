@@ -23,6 +23,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("review.urls")),
+    path('', include("authentication.urls")),
 ]
 
 if settings.DEBUG:

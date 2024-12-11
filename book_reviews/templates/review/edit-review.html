@@ -1,0 +1,12 @@
+{% extends "partials/base.html" %}
+
+{% block title %}Edit your Review of {{ book.title }}{% endblock title %}
+
+{% block body %}
+<h3 class="form-heading">Edit your Review of {{ book.title }}</h3>
+<form action="{% url 'review:edit_review' book.pk review.pk %}" method="POST" class="review-form">
+    {% include "partials/review-form.html" with form=form %}
+    <button type="submit" class="submit-btn">Edit Review</button>
+</form>
+
+{% endblock body %}

@@ -6,6 +6,8 @@ from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.template.defaultfilters import slugify
 
+from django.utils import timezone
+
 
 User = get_user_model()
 
@@ -62,7 +64,14 @@ class Review(models.Model):
     added_by = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     rating = models.PositiveIntegerField(validators=[validate_rating])
-    added_on = models.DateTimeField()
+    added_on = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def edit_is_not_within_time_window(self):
+        now = timezone.now()
+        time_difference = now - self.added_on
+        return time_difference.total_seconds() > (5 * 60)
+        
 
     def __str__(self):
         return f"Review by {self.added_by}"

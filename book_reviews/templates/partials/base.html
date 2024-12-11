@@ -17,17 +17,29 @@
       <a href="{% url 'review:book_list' %}" class="nav-link">Our Books</a>
       <div id="auth-buttons">
         {% if request.user.is_authenticated %}
-        <form id="logout-form" action="#" method="POST">
+        <form id="logout-form" action="{% url 'authentication:log_out' %}" method="POST">
+          {% csrf_token %}
           <button type="submit" class="nav-btn">Log Out</button>
         </form>
         {% else %}
-        <button type="submit" class="nav-btn" onclick="window.location.href='#'">Log In</button>
-        {% comment %} <a href="#" id="login-btn" class="nav-link">Log In</a> {% endcomment %}
+        <button type="submit" class="nav-btn" onclick="window.location.href='{% url 'authentication:log_in' %}'">Log In</button>
         {% endif %}
       </div>
     </div>
   </nav>
   <div class="space-after-nav"></div>
+  
+  {% if messages %}
+  <div class="message-container">
+      <ul>
+          {% for message in messages %}
+          <li class="message {{ message.tags }}">{{ message }}</li>
+          {% endfor %}
+      </ul>
+  </div>
+  {% endif %}
+
+
     {% block body %}
     {% endblock body %}
 </body>

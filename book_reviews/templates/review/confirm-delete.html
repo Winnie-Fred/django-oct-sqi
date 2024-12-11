@@ -1,0 +1,22 @@
+{% extends "partials/base.html" %}
+
+{% block title %}Confirm Delete{% endblock title %}
+
+{% block body %}
+<div class="delete-confirmation">
+    <h4 class="confirmation-heading">Are you sure you want to delete your review?</h4>
+    <div class="review-preview">
+        <div class="review-content">{{ review.content }}</div>
+        <p class="review-rating">Rating: {{ review.rating }}</p>
+    </div>
+    <div class="confirmation-actions">
+        <button type="button" class="cancel-btn" onclick="window.location.href='{% url 'review:book_detail' book.pk %}'">
+            No, take me back
+        </button>
+        <form action="{% url 'review:delete_review' book.pk review.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="confirm-btn">Yes, I am sure</button>
+        </form>
+    </div>
+</div>
+{% endblock body %}

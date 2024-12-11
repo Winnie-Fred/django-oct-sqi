@@ -1,0 +1,38 @@
+{% extends "partials/base.html" %}
+
+{% block title %}{{ book.title }}{% endblock title %}
+
+{% block body %}
+<div class="book-detail-container">
+  {% if book.cover_image %}
+  <img class="book-cover" src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover">
+  {% else %}
+  <div class="no-image">No image available</div>
+  {% endif %}
+  
+  <div class="book-details">
+    <h3 class="book-title">{{ book.title }}</h3>
+    <h4 class="book-author">By {{ book.author.first_name }} {{ book.author.last_name }}</h4>
+    <p class="book-genre">Genre: {{ book.get_genre_display }}</p>
+    <p class="book-pages">{{ book.no_of_pages }} pages</p>
+    <p class="book-isbn">ISBN: {{ book.isbn }}</p>
+    <p class="book-published">Published on: {{ book.published_on }}</p>
+    <a href="{% url 'review:create_review' book.pk %}" class="leave-review-btn">Leave a Review</a>
+  </div>
+</div>
+
+<div class="review-section">
+    {% for review in reviews %}
+    <div class="review">
+        <p class="review-meta">
+            <span class="review-author">Added by {{ review.added_by }}</span>
+            <span class="review-date">{{ review.added_on }}</span>
+        </p>
+        <div class="review-content">{{ review.content }}</div>
+        <p class="review-rating">Rating: <span>{{ review.rating }}</span>/5</p>
+        <a href="{% url 'review:edit_review' book.pk review.pk %}" class="edit-btn {% if request.user != review.added_by %}disable-link{% endif %}">Edit</a>
+        <a href="{% url 'review:confirm_delete' book.pk review.pk %}" class="delete-btn {% if request.user != review.added_by %}disable-link{% endif %}">Delete</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock body %}

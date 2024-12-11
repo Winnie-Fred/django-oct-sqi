@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'review',
+    'authentication',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_URL = "authentication:log_in"
+LOGOUT_REDIRECT_URL = "review:book_list"
+LOGIN_REDIRECT_URL = "review:book_list"

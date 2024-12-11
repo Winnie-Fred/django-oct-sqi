@@ -7,15 +7,17 @@
   <h3>List of Books</h3>
   <div class="book-grid">
     {% for book in books %}
-    <div class="book-card">
-      {% if book.cover_image %}
-      <img src="{{ book.cover_image.url }}" alt="Image for {{ book.title }}">
-      {% endif %}
-      <h2>{{ book.title }}</h2>
-      <h3>By {{ book.author.first_name }} {{ book.author.last_name }}</h3>
-      <p>Genre: {{ book.get_genre_display }}</p>
-      <p>Pages: {{ book.no_of_pages }}</p>
-    </div>
+    <a class="book-detail-link" href="{% url 'review:book_detail' book.id %}">
+      <div class="book-card">
+        {% if book.cover_image %}
+        <img src="{{ book.cover_image.url }}" alt="Image for {{ book.title }}">
+        {% endif %}
+        <h2>{{ book.title }}</h2>
+        <h3>By {{ book.author.first_name }} {{ book.author.last_name }}</h3>
+        <p>Genre: {{ book.get_genre_display }}</p>
+        <p>Pages: {{ book.no_of_pages }}</p>
+      </div>
+    </a>
     {% endfor %}
   </div>
 </div>

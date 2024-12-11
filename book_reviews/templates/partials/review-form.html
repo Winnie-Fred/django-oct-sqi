@@ -1,0 +1,34 @@
+{% csrf_token %}
+{% for error in form.non_field_errors %}
+<p class="error-msg">{{ error }}</p>
+{% endfor %}
+{% if form.errors.book %}
+{% for error in form.errors.book %}
+    <p class="error-msg">{{ error }}</p>
+{% endfor %}
+{% endif %}
+<input type="hidden" name="book" value="{{ book.pk }}">
+{% if form.errors.added_by %}
+{% for error in form.errors.added_by %}
+    <p class="error-msg">{{ error }}</p>
+{% endfor %}
+{% endif %}
+<input type="hidden" name="added_by" value="{{ request.user.pk }}">
+<div class="form-group">
+    {% if form.errors.content %}
+    {% for error in form.errors.content %}
+        <p class="error-msg">{{ error }}</p>
+    {% endfor %}
+    {% endif %}
+    <label for="content">Review:</label>
+    <textarea id="content" name="content" class="form-control">{% if form.content.value %}{{ form.content.value }}{% endif %}</textarea>
+</div>
+<div class="form-group">
+    {% if form.errors.rating %}
+    {% for error in form.errors.rating %}
+        <p class="error-msg">{{ error }}</p>
+    {% endfor %}
+    {% endif %}
+    <label for="rating">Rating:</label>
+    <input id="rating" type="number" name="rating" class="form-control" {% if form.rating.value %}value="{{ form.rating.value }}"{% endif %}>
+</div>
